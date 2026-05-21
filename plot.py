@@ -3,14 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
-# Поиск файла times.csv в разных местах
-possible_paths = [
-    'results/times.csv',
-    '../results/times.csv',
-    '../../results/times.csv',
-    '/Users/nnikich/Desktop/lab2/lab2/lab2/results/times.csv',
-    '/Users/nnikich/Desktop/lab2/results/times.csv',
-]
+possible_paths = ['results/times.csv']
 
 # Поиск в DerivedData
 import subprocess
@@ -77,5 +70,17 @@ plt.tight_layout()
 plt.savefig('results/fast_algorithms.png', dpi=150)
 plt.show()
 
+# График коллизий хэш-функции
+
+df_coll = pd.read_csv('results/collisions.csv')
+plt.figure(figsize=(10, 6))
+plt.plot(df_coll['Size'], df_coll['CollisionRate'], 'o-', color='red', linewidth=2, markersize=8)
+plt.xlabel('Размер массива (n)', fontsize=12)
+plt.ylabel('Частота коллизий', fontsize=12)
+plt.title('Зависимость коллизий хэш-функции от размера массива', fontsize=14)
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig('results/collisions_graph.png', dpi=150)
+plt.show()
 print("\nГрафики сохранены в results/")
 print(f"Исходные данные: {csv_path}")

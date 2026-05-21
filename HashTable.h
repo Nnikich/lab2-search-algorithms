@@ -26,11 +26,20 @@ private:
     int totalInserts;  ///< Общее количество вставок
 
     /**
-     * @brief Полиномиальная хэш-функция
+     * @brief Полиномиальная хэш-функция для строкового ключа
      * @param key Строковый ключ
      * @return Хэш-значение в диапазоне [0, table.size()-1]
      */
     size_t hash(const std::string& key) const;
+    
+    /**
+     * @brief Полиномиальная хэш-функция для объекта Teacher
+     * @details Комбинирует все поля преподавателя:
+     *          ФИО, факультет, учёное звание, учёная степень
+     * @param t Объект Teacher
+     * @return Хэш-значение в диапазоне [0, table.size()-1]
+     */
+    size_t hash(const Teacher& t) const;
 
 public:
     /**
@@ -53,7 +62,7 @@ public:
     
     /**
      * @brief Поиск всех элементов с заданным ключом
-     * @param key Искомый ключ
+     * @param key Искомый ключ (ФИО)
      * @return Вектор найденных преподавателей
      */
     std::vector<Teacher> search(const std::string& key) const;

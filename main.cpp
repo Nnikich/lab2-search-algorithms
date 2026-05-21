@@ -68,6 +68,21 @@ double measureLinearSearchTime(const vector<Teacher>& data, const string& key, i
     return duration<double>(end - start).count() / repeatCount;
 }
 
+size_t nextPrime(size_t n) {
+    if (n < 2) return 2;
+    while (true) {
+        bool isPrime = true;
+        for (size_t i = 2; i * i <= n; ++i) {
+            if (n % i == 0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if (isPrime) return n;
+        ++n;
+    }
+}
+
 int main() {
     vector<size_t> sizes = {100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000};
     string dataDir = "../data";
@@ -107,7 +122,8 @@ int main() {
         double tRBT = measureSearchTime(rbt, searchKey);
         
         // 4. HashTable
-        HashTable ht(data.size() * 2);
+        size_t tableSize = nextPrime(data.size() * 2);
+        HashTable ht(tableSize);
         ht.build(data);
         double tHash = measureSearchTime(ht, searchKey);
         collOut << n << "," << ht.getCollisions() << ","

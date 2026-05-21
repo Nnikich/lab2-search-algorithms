@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>lab2-search-algorithms: Класс RBTree</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">lab2-search-algorithms
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('class_r_b_tree.html','','class_r_b_tree-members'); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Класс RBTree</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Класс красно-черного дерева  
+ <a href="#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_r_b_tree_8h_source.html">RBTree.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф связей класса RBTree:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree__coll__graph.png" border="0" usemap="#a_r_b_tree_coll__map" loading="lazy" alt="Collaboration graph"/></div>
+<!-- MAP 0 -->
+<center><span class="legend">[<a target="top" href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Классы</h2></td></tr>
+<tr class="memitem:Node" id="r_Node"><td class="memItemLeft">struct &#160;</td><td class="memItemRight"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Узел красно-черного дерева  <a href="struct_r_b_tree_1_1_node.html#details">Подробнее...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a19921f34f32f777bb3c4b85d4ff1d9de" id="r_a19921f34f32f777bb3c4b85d4ff1d9de"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#a19921f34f32f777bb3c4b85d4ff1d9de">RBTree</a> ()</td></tr>
+<tr class="memitem:abab51e54e07c1adf0ca0c9a5d466427b" id="r_abab51e54e07c1adf0ca0c9a5d466427b"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="#abab51e54e07c1adf0ca0c9a5d466427b">~RBTree</a> ()</td></tr>
+<tr class="memitem:afe8ca3f7fbe9e8da814598a7ed5f8ed7" id="r_afe8ca3f7fbe9e8da814598a7ed5f8ed7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afe8ca3f7fbe9e8da814598a7ed5f8ed7">insert</a> (const <a class="el" href="struct_teacher.html">Teacher</a> &amp;t)</td></tr>
+<tr class="memitem:af4fbc8ea048e618066f1d00a0c110399" id="r_af4fbc8ea048e618066f1d00a0c110399"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af4fbc8ea048e618066f1d00a0c110399">build</a> (const std::vector&lt; <a class="el" href="struct_teacher.html">Teacher</a> &gt; &amp;data)</td></tr>
+<tr class="memitem:a1cfb21b38b086fee7157d7c7896029e9" id="r_a1cfb21b38b086fee7157d7c7896029e9"><td class="memItemLeft">std::vector&lt; <a class="el" href="struct_teacher.html">Teacher</a> &gt;&#160;</td><td class="memItemRight"><a class="el" href="#a1cfb21b38b086fee7157d7c7896029e9">search</a> (const std::string &amp;key) const</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Закрытые члены</h2></td></tr>
+<tr class="memitem:aa81b4ee503f30a824f2dd1c067d09be1" id="r_aa81b4ee503f30a824f2dd1c067d09be1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa81b4ee503f30a824f2dd1c067d09be1">rotateLeft</a> (<a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *x)</td></tr>
+<tr class="memitem:a6aa54caedfc056d5f35c33d1b727e754" id="r_a6aa54caedfc056d5f35c33d1b727e754"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a6aa54caedfc056d5f35c33d1b727e754">rotateRight</a> (<a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *x)</td></tr>
+<tr class="memitem:a2f25d502838ddf797db810bc48e169aa" id="r_a2f25d502838ddf797db810bc48e169aa"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2f25d502838ddf797db810bc48e169aa">fixInsert</a> (<a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *z)</td></tr>
+<tr class="memitem:ab590673016c5892102166fcc1c56ac57" id="r_ab590673016c5892102166fcc1c56ac57"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab590673016c5892102166fcc1c56ac57">insert</a> (<a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *&amp;node, <a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *parent, const <a class="el" href="struct_teacher.html">Teacher</a> &amp;t)</td></tr>
+<tr class="memitem:a44323c2378b37f69eb3ebdd47f0fcfc2" id="r_a44323c2378b37f69eb3ebdd47f0fcfc2"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a44323c2378b37f69eb3ebdd47f0fcfc2">search</a> (<a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *node, const std::string &amp;key, std::vector&lt; <a class="el" href="struct_teacher.html">Teacher</a> &gt; &amp;results) const</td></tr>
+<tr class="memitem:a9b81de4642c541f254f9458c81f058cf" id="r_a9b81de4642c541f254f9458c81f058cf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9b81de4642c541f254f9458c81f058cf">clear</a> (<a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *node)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Закрытые данные</h2></td></tr>
+<tr class="memitem:a4f6043c7ebe229240f90c9f62ac5aff9" id="r_a4f6043c7ebe229240f90c9f62ac5aff9"><td class="memItemLeft"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a4f6043c7ebe229240f90c9f62ac5aff9">root</a></td></tr>
+<tr class="memdesc:a4f6043c7ebe229240f90c9f62ac5aff9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Корень дерева  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>Класс красно-черного дерева </p>
+</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Конструктор(ы)</h2>
+<a id="a19921f34f32f777bb3c4b85d4ff1d9de" name="a19921f34f32f777bb3c4b85d4ff1d9de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19921f34f32f777bb3c4b85d4ff1d9de">&#9670;&#160;</a></span>RBTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RBTree::RBTree </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abab51e54e07c1adf0ca0c9a5d466427b" name="abab51e54e07c1adf0ca0c9a5d466427b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abab51e54e07c1adf0ca0c9a5d466427b">&#9670;&#160;</a></span>~RBTree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">RBTree::~RBTree </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_abab51e54e07c1adf0ca0c9a5d466427b_cgraph.png" border="0" usemap="#aclass_r_b_tree_abab51e54e07c1adf0ca0c9a5d466427b_cgraph" loading="lazy" alt=""/></div>
+<!-- MAP 1 -->
+</div>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Методы</h2>
+<a id="af4fbc8ea048e618066f1d00a0c110399" name="af4fbc8ea048e618066f1d00a0c110399"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4fbc8ea048e618066f1d00a0c110399">&#9670;&#160;</a></span>build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RBTree::build </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="struct_teacher.html">Teacher</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>data</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_af4fbc8ea048e618066f1d00a0c110399_cgraph.png" border="0" usemap="#aclass_r_b_tree_af4fbc8ea048e618066f1d00a0c110399_cgraph" loading="lazy" alt=""/></div>
+<!-- MAP 2 -->
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_af4fbc8ea048e618066f1d00a0c110399_icgraph.png" border="0" usemap="#aclass_r_b_tree_af4fbc8ea048e618066f1d00a0c110399_icgraph" loading="lazy" alt=""/></div>
+<!-- MAP 3 -->
+</div>
+
+</div>
+</div>
+<a id="a9b81de4642c541f254f9458c81f058cf" name="a9b81de4642c541f254f9458c81f058cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b81de4642c541f254f9458c81f058cf">&#9670;&#160;</a></span>clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RBTree::clear </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>node</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_a9b81de4642c541f254f9458c81f058cf_cgraph.png" border="0" usemap="#aclass_r_b_tree_a9b81de4642c541f254f9458c81f058cf_cgraph" loading="lazy" alt=""/></div>
+<!-- MAP 4 -->
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_a9b81de4642c541f254f9458c81f058cf_icgraph.png" border="0" usemap="#aclass_r_b_tree_a9b81de4642c541f254f9458c81f058cf_icgraph" loading="lazy" alt=""/></div>
+<!-- MAP 5 -->
+</div>
+
+</div>
+</div>
+<a id="a2f25d502838ddf797db810bc48e169aa" name="a2f25d502838ddf797db810bc48e169aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f25d502838ddf797db810bc48e169aa">&#9670;&#160;</a></span>fixInsert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RBTree::fixInsert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>z</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_a2f25d502838ddf797db810bc48e169aa_cgraph.png" border="0" usemap="#aclass_r_b_tree_a2f25d502838ddf797db810bc48e169aa_cgraph" loading="lazy" alt=""/></div>
+<!-- MAP 6 -->
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_a2f25d502838ddf797db810bc48e169aa_icgraph.png" border="0" usemap="#aclass_r_b_tree_a2f25d502838ddf797db810bc48e169aa_icgraph" loading="lazy" alt=""/></div>
+<!-- MAP 7 -->
+</div>
+
+</div>
+</div>
+<a id="afe8ca3f7fbe9e8da814598a7ed5f8ed7" name="afe8ca3f7fbe9e8da814598a7ed5f8ed7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe8ca3f7fbe9e8da814598a7ed5f8ed7">&#9670;&#160;</a></span>insert() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RBTree::insert </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_teacher.html">Teacher</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>t</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_afe8ca3f7fbe9e8da814598a7ed5f8ed7_cgraph.png" border="0" usemap="#aclass_r_b_tree_afe8ca3f7fbe9e8da814598a7ed5f8ed7_cgraph" loading="lazy" alt=""/></div>
+<!-- MAP 8 -->
+</div>
+
+</div>
+</div>
+<a id="ab590673016c5892102166fcc1c56ac57" name="ab590673016c5892102166fcc1c56ac57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab590673016c5892102166fcc1c56ac57">&#9670;&#160;</a></span>insert() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RBTree::insert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *&amp;</td>          <td class="paramname"><span class="paramname"><em>node</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>parent</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="struct_teacher.html">Teacher</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>t</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_ab590673016c5892102166fcc1c56ac57_cgraph.png" border="0" usemap="#aclass_r_b_tree_ab590673016c5892102166fcc1c56ac57_cgraph" loading="lazy" alt=""/></div>
+<!-- MAP 9 -->
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_ab590673016c5892102166fcc1c56ac57_icgraph.png" border="0" usemap="#aclass_r_b_tree_ab590673016c5892102166fcc1c56ac57_icgraph" loading="lazy" alt=""/></div>
+<!-- MAP 10 -->
+</div>
+
+</div>
+</div>
+<a id="aa81b4ee503f30a824f2dd1c067d09be1" name="aa81b4ee503f30a824f2dd1c067d09be1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa81b4ee503f30a824f2dd1c067d09be1">&#9670;&#160;</a></span>rotateLeft()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RBTree::rotateLeft </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_aa81b4ee503f30a824f2dd1c067d09be1_icgraph.png" border="0" usemap="#aclass_r_b_tree_aa81b4ee503f30a824f2dd1c067d09be1_icgraph" loading="lazy" alt=""/></div>
+<!-- MAP 11 -->
+</div>
+
+</div>
+</div>
+<a id="a6aa54caedfc056d5f35c33d1b727e754" name="a6aa54caedfc056d5f35c33d1b727e754"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6aa54caedfc056d5f35c33d1b727e754">&#9670;&#160;</a></span>rotateRight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RBTree::rotateRight </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_a6aa54caedfc056d5f35c33d1b727e754_icgraph.png" border="0" usemap="#aclass_r_b_tree_a6aa54caedfc056d5f35c33d1b727e754_icgraph" loading="lazy" alt=""/></div>
+<!-- MAP 12 -->
+</div>
+
+</div>
+</div>
+<a id="a1cfb21b38b086fee7157d7c7896029e9" name="a1cfb21b38b086fee7157d7c7896029e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cfb21b38b086fee7157d7c7896029e9">&#9670;&#160;</a></span>search() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="struct_teacher.html">Teacher</a> &gt; RBTree::search </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_a1cfb21b38b086fee7157d7c7896029e9_cgraph.png" border="0" usemap="#aclass_r_b_tree_a1cfb21b38b086fee7157d7c7896029e9_cgraph" loading="lazy" alt=""/></div>
+<!-- MAP 13 -->
+</div>
+
+</div>
+</div>
+<a id="a44323c2378b37f69eb3ebdd47f0fcfc2" name="a44323c2378b37f69eb3ebdd47f0fcfc2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44323c2378b37f69eb3ebdd47f0fcfc2">&#9670;&#160;</a></span>search() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void RBTree::search </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a> *</td>          <td class="paramname"><span class="paramname"><em>node</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="struct_teacher.html">Teacher</a> &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>results</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_a44323c2378b37f69eb3ebdd47f0fcfc2_cgraph.png" border="0" usemap="#aclass_r_b_tree_a44323c2378b37f69eb3ebdd47f0fcfc2_cgraph" loading="lazy" alt=""/></div>
+<!-- MAP 14 -->
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_r_b_tree_a44323c2378b37f69eb3ebdd47f0fcfc2_icgraph.png" border="0" usemap="#aclass_r_b_tree_a44323c2378b37f69eb3ebdd47f0fcfc2_icgraph" loading="lazy" alt=""/></div>
+<!-- MAP 15 -->
+</div>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Данные класса</h2>
+<a id="a4f6043c7ebe229240f90c9f62ac5aff9" name="a4f6043c7ebe229240f90c9f62ac5aff9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f6043c7ebe229240f90c9f62ac5aff9">&#9670;&#160;</a></span>root</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_r_b_tree_1_1_node.html">Node</a>* RBTree::root</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Корень дерева </p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов классов находятся в файлах:<ul>
+<li><a class="el" href="_r_b_tree_8h_source.html">RBTree.h</a></li>
+<li><a class="el" href="_r_b_tree_8cpp.html">RBTree.cpp</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="class_r_b_tree.html">RBTree</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

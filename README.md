@@ -30,15 +30,17 @@
 ![Коллизии хэш-функции](lab2/results/collisions_graph.png)
 
 
-## Сборка
+### Сборка
 
 ```bash
 mkdir build && cd build
 cmake ..
 make
 ./search_test
+```
 
-### Открыть документацию
+#### Открыть документацию
 
 ```bash
 open docs/html/index.html
+```

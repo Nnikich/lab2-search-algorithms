@@ -8,10 +8,6 @@ build/
 *.out
 __pycache__/
 *.pyc
-docs/
-latex/
-results/*.csv
-results/*.png
 !results/.gitkeep
 .DS_Store
 *.tmp

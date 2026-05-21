@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.17.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>lab2-search-algorithms: Исходный файл RBTree.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+const theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'default';
+mermaid.initialize({ startOnLoad: true, theme: theme });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">lab2-search-algorithms
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.17.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', () => {
+  initMenu('',true);
+  init_search();
+});
+</script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1" style="position:absolute;right:8px;top:8px;height:36px;"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2" style="float:right">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon" onmouseover="return searchBox.OnSearchSelectShow()" onmouseout="return searchBox.OnSearchSelectHide()"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Поиск" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_r_b_tree_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Загрузка...</div>
+<div class="SRStatus" id="Searching">Поиск...</div>
+<div class="SRStatus" id="NoMatches">Не найдено</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">RBTree.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_r_b_tree_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#ifndef RBTREE_H</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#define RBTREE_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;<a class="code" href="_teacher_8h.html">Teacher.h</a>&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="_r_b_tree_8h.html#ab87bacfdad76e61b9412d7124be44c1caf77fb67151d0c18d397069ad8c271ba3">   21</a></span><span class="keyword">enum</span> <a class="code hl_enumeration" href="_r_b_tree_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> { <a class="code hl_enumvalue" href="_r_b_tree_8h.html#ab87bacfdad76e61b9412d7124be44c1caf80f9a890089d211842d59625e561f88">RED</a>, <a class="code hl_enumvalue" href="_r_b_tree_8h.html#ab87bacfdad76e61b9412d7124be44c1caf77fb67151d0c18d397069ad8c271ba3">BLACK</a> };</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span></div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="};">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_r_b_tree.html">   27</a></span><span class="keyword">class </span><a class="code hl_function" href="class_r_b_tree.html#a19921f34f32f777bb3c4b85d4ff1d9de">RBTree</a> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">private</span>:</div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="};">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="struct_r_b_tree_1_1_node.html">   33</a></span>    <span class="keyword">struct </span><a class="code hl_function" href="struct_r_b_tree_1_1_node.html#a7e8a8076632eed037afa1f5fc3aee1a3">Node</a> {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="struct_r_b_tree_1_1_node.html#a60aeb14f5c226efd83e02a95a20b0482">   34</a></span>        <a class="code hl_struct" href="struct_teacher.html">Teacher</a> <a class="code hl_variable" href="struct_r_b_tree_1_1_node.html#a60aeb14f5c226efd83e02a95a20b0482">data</a>;   </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="struct_r_b_tree_1_1_node.html#ab2ed08bbac4434750ea529866351789b">   35</a></span>        <a class="code hl_function" href="struct_r_b_tree_1_1_node.html#a7e8a8076632eed037afa1f5fc3aee1a3">Node</a>* <a class="code hl_variable" href="struct_r_b_tree_1_1_node.html#ab2ed08bbac4434750ea529866351789b">left</a>;     </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="struct_r_b_tree_1_1_node.html#a218ecee937a478fbae4224b9204de60f">   36</a></span>        <a class="code hl_function" href="struct_r_b_tree_1_1_node.html#a7e8a8076632eed037afa1f5fc3aee1a3">Node</a>* <a class="code hl_variable" href="struct_r_b_tree_1_1_node.html#a218ecee937a478fbae4224b9204de60f">right</a>;    </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="struct_r_b_tree_1_1_node.html#a2d19bc0a52acc2615198e9e14d040769">   37</a></span>        <a class="code hl_function" href="struct_r_b_tree_1_1_node.html#a7e8a8076632eed037afa1f5fc3aee1a3">Node</a>* <a class="code hl_variable" href="struct_r_b_tree_1_1_node.html#a2d19bc0a52acc2615198e9e14d040769">parent</a>;   </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="struct_r_b_tree_1_1_node.html#ae0feb930f3d3ce07f658f5b18ca75202">   38</a></span>        <a class="code hl_enumeration" href="_r_b_tree_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> <a class="code hl_variable" href="struct_r_b_tree_1_1_node.html#ae0feb930f3d3ce07f658f5b18ca75202">color</a>;    </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">explicit</span> <a class="code hl_function" href="struct_r_b_tree_1_1_node.html#a7e8a8076632eed037afa1f5fc3aee1a3">Node</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_teacher.html">Teacher</a>&amp; t);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_r_b_tree.html#a4f6043c7ebe229240f90c9f62ac5aff9">   47</a></span>    <a class="code hl_struct" href="struct_r_b_tree_1_1_node.html">Node</a>* <a class="code hl_variable" href="class_r_b_tree.html#a4f6043c7ebe229240f90c9f62ac5aff9">root</a>; </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_r_b_tree.html#aa81b4ee503f30a824f2dd1c067d09be1">rotateLeft</a>(<a class="code hl_struct" href="struct_r_b_tree_1_1_node.html">Node</a>* x);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_r_b_tree.html#a6aa54caedfc056d5f35c33d1b727e754">rotateRight</a>(<a class="code hl_struct" href="struct_r_b_tree_1_1_node.html">Node</a>* x);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_r_b_tree.html#a2f25d502838ddf797db810bc48e169aa">fixInsert</a>(<a class="code hl_struct" href="struct_r_b_tree_1_1_node.html">Node</a>* z);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_r_b_tree.html#ab590673016c5892102166fcc1c56ac57">insert</a>(<a class="code hl_struct" href="struct_r_b_tree_1_1_node.html">Node</a>*&amp; node, <a class="code hl_struct" href="struct_r_b_tree_1_1_node.html">Node</a>* parent, <span class="keyword">const</span> <a class="code hl_struct" href="struct_teacher.html">Teacher</a>&amp; t);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_r_b_tree.html#a44323c2378b37f69eb3ebdd47f0fcfc2">search</a>(<a class="code hl_struct" href="struct_r_b_tree_1_1_node.html">Node</a>* node, <span class="keyword">const</span> std::string&amp; key, std::vector&lt;Teacher&gt;&amp; results) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_r_b_tree.html#a9b81de4642c541f254f9458c81f058cf">clear</a>(<a class="code hl_struct" href="struct_r_b_tree_1_1_node.html">Node</a>* node);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_function" href="class_r_b_tree.html#a19921f34f32f777bb3c4b85d4ff1d9de">RBTree</a>();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_function" href="class_r_b_tree.html#abab51e54e07c1adf0ca0c9a5d466427b">~RBTree</a>();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_r_b_tree.html#ab590673016c5892102166fcc1c56ac57">insert</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_teacher.html">Teacher</a>&amp; t);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_r_b_tree.html#af4fbc8ea048e618066f1d00a0c110399">build</a>(<span class="keyword">const</span> std::vector&lt;Teacher&gt;&amp; data);</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    std::vector&lt;Teacher&gt; <a class="code hl_function" href="class_r_b_tree.html#a44323c2378b37f69eb3ebdd47f0fcfc2">search</a>(<span class="keyword">const</span> std::string&amp; key) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>};</div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#endif </span><span class="comment">// RBTREE_H</span></div>
+<div class="ttc" id="a_r_b_tree_8h_html_ab87bacfdad76e61b9412d7124be44c1c"><div class="ttname"><a href="_r_b_tree_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a></div><div class="ttdeci">Color</div><div class="ttdoc">Цвет узла красно-черного дерева</div><div class="ttdef"><b>Определения</b> RBTree.h:21</div></div>
+<div class="ttc" id="a_r_b_tree_8h_html_ab87bacfdad76e61b9412d7124be44c1caf77fb67151d0c18d397069ad8c271ba3"><div class="ttname"><a href="_r_b_tree_8h.html#ab87bacfdad76e61b9412d7124be44c1caf77fb67151d0c18d397069ad8c271ba3">BLACK</a></div><div class="ttdeci">@ BLACK</div><div class="ttdef"><b>Определения</b> RBTree.h:21</div></div>
+<div class="ttc" id="a_r_b_tree_8h_html_ab87bacfdad76e61b9412d7124be44c1caf80f9a890089d211842d59625e561f88"><div class="ttname"><a href="_r_b_tree_8h.html#ab87bacfdad76e61b9412d7124be44c1caf80f9a890089d211842d59625e561f88">RED</a></div><div class="ttdeci">@ RED</div><div class="ttdef"><b>Определения</b> RBTree.h:21</div></div>
+<div class="ttc" id="a_teacher_8h_html"><div class="ttname"><a href="_teacher_8h.html">Teacher.h</a></div><div class="ttdoc">Определение структуры данных &quot;Преподаватель&quot;.</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_a19921f34f32f777bb3c4b85d4ff1d9de"><div class="ttname"><a href="class_r_b_tree.html#a19921f34f32f777bb3c4b85d4ff1d9de">RBTree::RBTree</a></div><div class="ttdeci">RBTree()</div><div class="ttdef"><b>Определения</b> RBTree.cpp:11</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_a2f25d502838ddf797db810bc48e169aa"><div class="ttname"><a href="class_r_b_tree.html#a2f25d502838ddf797db810bc48e169aa">RBTree::fixInsert</a></div><div class="ttdeci">void fixInsert(Node *z)</div><div class="ttdef"><b>Определения</b> RBTree.cpp:41</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_a44323c2378b37f69eb3ebdd47f0fcfc2"><div class="ttname"><a href="class_r_b_tree.html#a44323c2378b37f69eb3ebdd47f0fcfc2">RBTree::search</a></div><div class="ttdeci">void search(Node *node, const std::string &amp;key, std::vector&lt; Teacher &gt; &amp;results) const</div><div class="ttdef"><b>Определения</b> RBTree.cpp:93</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_a4f6043c7ebe229240f90c9f62ac5aff9"><div class="ttname"><a href="class_r_b_tree.html#a4f6043c7ebe229240f90c9f62ac5aff9">RBTree::root</a></div><div class="ttdeci">Node * root</div><div class="ttdoc">Корень дерева</div><div class="ttdef"><b>Определения</b> RBTree.h:47</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_a6aa54caedfc056d5f35c33d1b727e754"><div class="ttname"><a href="class_r_b_tree.html#a6aa54caedfc056d5f35c33d1b727e754">RBTree::rotateRight</a></div><div class="ttdeci">void rotateRight(Node *x)</div><div class="ttdef"><b>Определения</b> RBTree.cpp:29</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_a9b81de4642c541f254f9458c81f058cf"><div class="ttname"><a href="class_r_b_tree.html#a9b81de4642c541f254f9458c81f058cf">RBTree::clear</a></div><div class="ttdeci">void clear(Node *node)</div><div class="ttdef"><b>Определения</b> RBTree.cpp:105</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_aa81b4ee503f30a824f2dd1c067d09be1"><div class="ttname"><a href="class_r_b_tree.html#aa81b4ee503f30a824f2dd1c067d09be1">RBTree::rotateLeft</a></div><div class="ttdeci">void rotateLeft(Node *x)</div><div class="ttdef"><b>Определения</b> RBTree.cpp:17</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_ab590673016c5892102166fcc1c56ac57"><div class="ttname"><a href="class_r_b_tree.html#ab590673016c5892102166fcc1c56ac57">RBTree::insert</a></div><div class="ttdeci">void insert(Node *&amp;node, Node *parent, const Teacher &amp;t)</div><div class="ttdef"><b>Определения</b> RBTree.cpp:80</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_abab51e54e07c1adf0ca0c9a5d466427b"><div class="ttname"><a href="class_r_b_tree.html#abab51e54e07c1adf0ca0c9a5d466427b">RBTree::~RBTree</a></div><div class="ttdeci">~RBTree()</div><div class="ttdef"><b>Определения</b> RBTree.cpp:13</div></div>
+<div class="ttc" id="aclass_r_b_tree_html_af4fbc8ea048e618066f1d00a0c110399"><div class="ttname"><a href="class_r_b_tree.html#af4fbc8ea048e618066f1d00a0c110399">RBTree::build</a></div><div class="ttdeci">void build(const std::vector&lt; Teacher &gt; &amp;data)</div><div class="ttdef"><b>Определения</b> RBTree.cpp:116</div></div>
+<div class="ttc" id="astruct_r_b_tree_1_1_node_html"><div class="ttname"><a href="struct_r_b_tree_1_1_node.html">RBTree::Node</a></div><div class="ttdoc">Узел красно-черного дерева</div><div class="ttdef"><b>Определения</b> RBTree.h:33</div></div>
+<div class="ttc" id="astruct_r_b_tree_1_1_node_html_a218ecee937a478fbae4224b9204de60f"><div class="ttname"><a href="struct_r_b_tree_1_1_node.html#a218ecee937a478fbae4224b9204de60f">RBTree::Node::right</a></div><div class="ttdeci">Node * right</div><div class="ttdoc">Правый потомок</div><div class="ttdef"><b>Определения</b> RBTree.h:36</div></div>
+<div class="ttc" id="astruct_r_b_tree_1_1_node_html_a2d19bc0a52acc2615198e9e14d040769"><div class="ttname"><a href="struct_r_b_tree_1_1_node.html#a2d19bc0a52acc2615198e9e14d040769">RBTree::Node::parent</a></div><div class="ttdeci">Node * parent</div><div class="ttdoc">Родительский узел</div><div class="ttdef"><b>Определения</b> RBTree.h:37</div></div>
+<div class="ttc" id="astruct_r_b_tree_1_1_node_html_a60aeb14f5c226efd83e02a95a20b0482"><div class="ttname"><a href="struct_r_b_tree_1_1_node.html#a60aeb14f5c226efd83e02a95a20b0482">RBTree::Node::data</a></div><div class="ttdeci">Teacher data</div><div class="ttdoc">Данные преподавателя</div><div class="ttdef"><b>Определения</b> RBTree.h:34</div></div>
+<div class="ttc" id="astruct_r_b_tree_1_1_node_html_a7e8a8076632eed037afa1f5fc3aee1a3"><div class="ttname"><a href="struct_r_b_tree_1_1_node.html#a7e8a8076632eed037afa1f5fc3aee1a3">RBTree::Node::Node</a></div><div class="ttdeci">Node(const Teacher &amp;t)</div><div class="ttdoc">Конструктор узла</div><div class="ttdef"><b>Определения</b> RBTree.cpp:8</div></div>
+<div class="ttc" id="astruct_r_b_tree_1_1_node_html_ab2ed08bbac4434750ea529866351789b"><div class="ttname"><a href="struct_r_b_tree_1_1_node.html#ab2ed08bbac4434750ea529866351789b">RBTree::Node::left</a></div><div class="ttdeci">Node * left</div><div class="ttdoc">Левый потомок</div><div class="ttdef"><b>Определения</b> RBTree.h:35</div></div>
+<div class="ttc" id="astruct_r_b_tree_1_1_node_html_ae0feb930f3d3ce07f658f5b18ca75202"><div class="ttname"><a href="struct_r_b_tree_1_1_node.html#ae0feb930f3d3ce07f658f5b18ca75202">RBTree::Node::color</a></div><div class="ttdeci">Color color</div><div class="ttdoc">Цвет узла</div><div class="ttdef"><b>Определения</b> RBTree.h:38</div></div>
+<div class="ttc" id="astruct_teacher_html"><div class="ttname"><a href="struct_teacher.html">Teacher</a></div><div class="ttdoc">Структура, представляющая преподавателя</div><div class="ttdef"><b>Определения</b> Teacher.h:27</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="_r_b_tree_8h.html">RBTree.h</a></li>
+    <li class="footer">Создано системой <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.17.0 </li>
+  </ul>
+</div>
+</body>
+</html>

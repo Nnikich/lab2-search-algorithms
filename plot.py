@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -70,17 +72,36 @@ plt.tight_layout()
 plt.savefig('results/fast_algorithms.png', dpi=150)
 plt.show()
 
-# График коллизий хэш-функции
-
-df_coll = pd.read_csv('results/collisions.csv')
-plt.figure(figsize=(10, 6))
-plt.plot(df_coll['Size'], df_coll['CollisionRate'], 'o-', color='red', linewidth=2, markersize=8)
-plt.xlabel('Размер массива (n)', fontsize=12)
-plt.ylabel('Частота коллизий', fontsize=12)
-plt.title('Зависимость коллизий хэш-функции от размера массива', fontsize=14)
-plt.grid(True, alpha=0.3)
-plt.tight_layout()
-plt.savefig('results/collisions_graph.png', dpi=150)
-plt.show()
 print("\nГрафики сохранены в results/")
 print(f"Исходные данные: {csv_path}")
+
+# График 3: Число коллизий хэш-таблицы
+if os.path.exists('results/collisions.csv'):
+    plt.figure(figsize=(12, 6))
+    df_coll = pd.read_csv('results/collisions.csv')
+    plt.plot(df_coll['Size'], df_coll['Collisions'], 'ro-', label='Число коллизий', linewidth=2)
+    plt.xscale('log')
+    plt.yscale('log')
+    plt.xlabel('Размер массива (n)', fontsize=12)
+    plt.ylabel('Число коллизий', fontsize=12)
+    plt.title('Зависимость числа коллизий хэш-функции от размерности массива', fontsize=14)
+    plt.legend(fontsize=11)
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig('results/collisions_graph.png', dpi=150)
+    plt.show()
+    
+    # График 4: Доля коллизий
+    plt.figure(figsize=(12, 6))
+    plt.plot(df_coll['Size'], df_coll['CollisionRate'], 'go-', label='Частота коллизий (Collision Rate)', linewidth=2)
+    plt.xscale('log')
+    plt.xlabel('Размер массива (n)', fontsize=12)
+    plt.ylabel('Частота коллизий', fontsize=12)
+    plt.title('Зависимость частоты коллизий от размерности массива', fontsize=14)
+    plt.legend(fontsize=11)
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.savefig('results/collision_rate_graph.png', dpi=150)
+    plt.show()
+    print("Графики коллизий успешно сохранены в results/collisions_graph.png и results/collision_rate_graph.png")
+

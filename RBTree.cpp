@@ -98,6 +98,7 @@ void RBTree::search(Node* node, const std::string& key, std::vector<Teacher>& re
         search(node->right, key, results);
     else {
         results.push_back(node->data);
+        search(node->left, key, results);
         search(node->right, key, results);
     }
 }

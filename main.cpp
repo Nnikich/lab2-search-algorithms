@@ -49,20 +49,24 @@ vector<Teacher> loadFromCSV(const string& filename) {
 
 // Измерение времени для структур с методом search
 template<typename Structure>
-double measureSearchTime(Structure& structure, const string& key, int repeatCount = 10) {
+double measureSearchTime(Structure& structure, const string& key, int repeatCount = 100) {
     auto start = high_resolution_clock::now();
+    volatile size_t prevent_opt = 0;
     for (int i = 0; i < repeatCount; ++i) {
-        structure.search(key);
+        auto res = structure.search(key);
+        prevent_opt += res.size();
     }
     auto end = high_resolution_clock::now();
     return duration<double>(end - start).count() / repeatCount;
 }
 
 // Специализация для линейного поиска
-double measureLinearSearchTime(const vector<Teacher>& data, const string& key, int repeatCount = 10) {
+double measureLinearSearchTime(const vector<Teacher>& data, const string& key, int repeatCount = 100) {
     auto start = high_resolution_clock::now();
+    volatile size_t prevent_opt = 0;
     for (int i = 0; i < repeatCount; ++i) {
-        LinearSearch::search(data, key);
+        auto res = LinearSearch::search(data, key);
+        prevent_opt += res.size();
     }
     auto end = high_resolution_clock::now();
     return duration<double>(end - start).count() / repeatCount;
@@ -84,7 +88,7 @@ size_t nextPrime(size_t n) {
 }
 
 int main() {
-    vector<size_t> sizes = {100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000};
+    vector<size_t> sizes = {100, 200, 500, 1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000};
     string dataDir = "../data";
     
     system("mkdir -p results");
@@ -135,12 +139,13 @@ int main() {
             mmap.insert({t.key(), t});
         }
         auto start = high_resolution_clock::now();
-        for (int i = 0; i < 10; ++i) {
+        volatile size_t prevent_opt = 0;
+        for (int i = 0; i < 100; ++i) {
             auto range = mmap.equal_range(searchKey);
-            (void)range;
+            prevent_opt += std::distance(range.first, range.second);
         }
         auto end = high_resolution_clock::now();
-        double tMultimap = duration<double>(end - start).count() / 10;
+        double tMultimap = duration<double>(end - start).count() / 100;
         
         out << n << "," << tLinear << "," << tBST << "," << tRBT << "," << tHash << "," << tMultimap << "\n";
         out.flush();
